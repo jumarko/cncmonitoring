@@ -1,3 +1,5 @@
+#include <iostream>
+
 class Point {
 private:
     int x;
