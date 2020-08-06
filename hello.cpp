@@ -9,3 +9,9 @@ public:
     inline void setX(int x) { this->x = x; }
     inline void setY(int y) { this->y = y; }
 };
+
+int main()
+{
+	cout << "Hello" ;
+	return 0;
+}
