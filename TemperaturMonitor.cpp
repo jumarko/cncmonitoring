@@ -16,6 +16,7 @@ TemperatureMonitor::TemperatureMonitor(float threshold)
 TemperatureMonitor::TemperatureMonitor(const TemperatureMonitor& obj)
 {
 	_validator = new TemperatureValidator();
+	_temperatureValue = 0;
 }
 TemperatureMonitor::~TemperatureMonitor()
 {

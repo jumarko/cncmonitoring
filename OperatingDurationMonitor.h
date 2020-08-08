@@ -20,7 +20,6 @@ class OperatingDurationMonitor
 	private:
 		IValidator* _validator;
 		float _operatingDurationInMins;
-		float _thresholdOperatingDurationInMins;
 };
 
 

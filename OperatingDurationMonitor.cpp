@@ -16,6 +16,7 @@ OperatingDurationMonitor::OperatingDurationMonitor(float threshold)
 OperatingDurationMonitor::OperatingDurationMonitor(const OperatingDurationMonitor& obj)
 {
 	_validator = new OperatingDurationValidator();
+	_operatingDurationInMins = 0;
 }
 
 OperatingDurationMonitor::~OperatingDurationMonitor()
