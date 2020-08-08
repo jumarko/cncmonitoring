@@ -13,8 +13,7 @@
 class TemperatureMonitor
 {
 	public:
-	    TemperatureMonitor(){}
-		TemperatureMonitor(float);
+		explicit TemperatureMonitor(float);
 		~TemperatureMonitor();
 		void onTemperatureValueUpdate(float);
 	private:
