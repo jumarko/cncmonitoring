@@ -35,11 +35,11 @@ CNCMonitorFacade::~CNCMonitorFacade()
 	delete _durationMonitor;
 	delete _partDimensionMonitor;
 }
-
+/*
 int main()
 {
 	CNCMonitorFacade monitor;
 	return 0;
 }
 
-
+*/
