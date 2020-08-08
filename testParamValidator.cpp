@@ -34,13 +34,13 @@ TEST(OperatingDurationValidator, InvalidInput)
 TEST(SelfDiagnosisValidator, ValidInput)
 {
 	SelfDiagnosisValidator selfDiagnosisValidator;
-	ASSERT_EQ(false, selfDiagnosisValidator.validateParameter(0x00));
+	ASSERT_EQ(false, selfDiagnosisValidator.validateParameter(0xFF));
 }
 
 TEST(SelfDiagnosisValidator, InvalidInput)
 {
 	SelfDiagnosisValidator selfDiagnosisValidator;
-	ASSERT_EQ(true, selfDiagnosisValidator.validateParameter(0xFF));
+	ASSERT_EQ(true, selfDiagnosisValidator.validateParameter(0x00));
 }
 TEST(TemperatureValidator, ValidInput)
 {
