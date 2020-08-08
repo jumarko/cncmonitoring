@@ -28,7 +28,6 @@ class CNCMonitorFacade
 public:
 	CNCMonitorFacade();
 	~CNCMonitorFacade(){}
-	void startCNCMonitoring();
 private:
 	TemperatureMonitor* tempMonitor;
 	SelfDiagnosisMonitor* _selfDiagMonitor;
