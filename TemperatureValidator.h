@@ -17,7 +17,7 @@ public:
 	TemperatureValidator() {}
 	explicit TemperatureValidator(float threshold);
 	virtual ~TemperatureValidator();
-	void validateParameter(float);
+	bool validateParameter(float);
 private:
 	IAlarm *_alarm;
 	float _thresholdTemp;

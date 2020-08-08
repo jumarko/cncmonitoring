@@ -14,7 +14,7 @@ class IValidator
 public:
 	IValidator() {}
 	virtual ~IValidator() {}
-	virtual void validateParameter(float) = 0;
+	virtual bool validateParameter(float) = 0;
 
 };
 

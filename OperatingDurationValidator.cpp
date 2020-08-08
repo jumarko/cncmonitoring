@@ -21,15 +21,17 @@ OperatingDurationValidator::~OperatingDurationValidator()
 	delete _alarm;
 }
 
-void OperatingDurationValidator::validateParameter(float currentVal)
+bool OperatingDurationValidator::validateParameter(float currentVal)
 {
 	if(currentVal > _thresholdOperatingDurationInMins)
 	{
 		_alarm->raiseAlarm();
+		return true;
 	}
 	else
 	{
 		std::cout <<"Operating Duration is within limits";
+		return false;
 	}
 }
 

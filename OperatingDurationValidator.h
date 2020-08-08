@@ -17,7 +17,7 @@ public:
 	OperatingDurationValidator() {}
 	explicit OperatingDurationValidator(float threshold);
 	virtual ~OperatingDurationValidator();
-	void validateParameter(float);
+	bool validateParameter(float);
 private:
 	IAlarm *_alarm;
 	float _thresholdOperatingDurationInMins;

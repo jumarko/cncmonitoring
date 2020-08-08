@@ -20,14 +20,16 @@ SelfDiagnosisValidator::~SelfDiagnosisValidator()
 	delete _alarm;
 }
 
-void SelfDiagnosisValidator::validateParameter(float currentVal)
+bool SelfDiagnosisValidator::validateParameter(float currentVal)
 {
 	if(currentVal != 0XFF)
 	{
 		_alarm->raiseAlarm();
+		return true;
 	}
 	else
 	{
 		std::cout <<"Machine is normal";
+		return false;
 	}
 }

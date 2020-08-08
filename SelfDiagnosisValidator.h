@@ -17,7 +17,7 @@ class SelfDiagnosisValidator:public IValidator
 public:
 	SelfDiagnosisValidator();
 	virtual ~SelfDiagnosisValidator();
-	void validateParameter(float);
+	bool validateParameter(float);
 private:
 	IAlarm *_alarm;
 };

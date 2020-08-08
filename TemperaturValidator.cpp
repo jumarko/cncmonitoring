@@ -20,14 +20,16 @@ TemperatureValidator::~TemperatureValidator()
 	delete _alarm;
 }
 
-void TemperatureValidator::validateParameter(float currentVal)
+bool TemperatureValidator::validateParameter(float currentVal)
 {
 	if(currentVal > _thresholdTemp)
 	{
 		_alarm->raiseAlarm();
+		return true;
 	}
 	else
 	{
 		std::cout <<"Temperature is normal";
+		return false;
 	}
 }
