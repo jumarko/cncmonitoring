@@ -23,15 +23,17 @@ PartDimensionValidator::~PartDimensionValidator()
 	delete _alarm;
 }
 
-void PartDimensionValidator::validateParameter(float currentVal)
+bool PartDimensionValidator::validateParameter(float currentVal)
 {
 	if(currentVal > _partDimensionThreshold)
 	{
 		_alarm->raiseAlarm();
+		return true;
 	}
 	else
 	{
 		std::cout <<"Operating Duration is within limits";
+		return false;
 	}
 }
 

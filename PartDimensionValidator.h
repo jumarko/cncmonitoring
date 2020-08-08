@@ -17,7 +17,7 @@ public:
 	PartDimensionValidator() {}
 	explicit PartDimensionValidator(float threshold);
 	virtual ~PartDimensionValidator();
-	void validateParameter(float);
+	bool validateParameter(float);
 private:
 	IAlarm *_alarm;
 	float _partDimensionThreshold;
