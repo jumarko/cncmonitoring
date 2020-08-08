@@ -8,7 +8,7 @@
 #ifndef MONITOR_OPERATINGDURATIONMONITOR_H_
 #define MONITOR_OPERATINGDURATIONMONITOR_H_
 
-#include "../Validator/OperatingDurationValidator.h"
+#include "OperatingDurationValidator.h"
 
 class OperatingDurationMonitor
 {

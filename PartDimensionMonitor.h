@@ -9,7 +9,7 @@
 #define MONITOR_PARTDIMENSIONMONITOR_H_
 
 
-#include "../Validator/PartDimensionValidator.h"
+#include "PartDimensionValidator.h"
 
 class PartDimensionMonitor
 {

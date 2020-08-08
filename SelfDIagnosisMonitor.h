@@ -9,7 +9,7 @@
 #define MONITOR_SELFDIAGNOSISMONITOR_H_
 
 
-#include "../Validator/SelfDiagnosisValidator.h"
+#include "SelfDiagnosisValidator.h"
 
 class SelfDiagnosisMonitor
 {

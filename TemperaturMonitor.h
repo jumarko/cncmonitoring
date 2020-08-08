@@ -8,7 +8,7 @@
 #ifndef TEMPERATURMONITOR_H_
 #define TEMPERATURMONITOR_H_
 
-#include "../Validator/TemperatureValidator.h"
+#include "TemperatureValidator.h"
 
 class TemperatureMonitor
 {
