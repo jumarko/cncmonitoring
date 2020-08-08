@@ -13,6 +13,11 @@ PartDimensionMonitor::PartDimensionMonitor(float threshold)
 	_validator = new PartDimensionValidator(threshold);
 }
 
+PartDimensionMonitor::PartDimensionMonitor(const PartDimensionMonitor&)
+{
+	_validator = new PartDimensionValidator();
+}
+
 PartDimensionMonitor::~PartDimensionMonitor()
 {
 	delete _validator;

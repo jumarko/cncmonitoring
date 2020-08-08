@@ -20,7 +20,7 @@ PartDimensionValidator::PartDimensionValidator(float threshold)
 
 PartDimensionValidator::~PartDimensionValidator()
 {
-
+	delete _alarm;
 }
 
 void PartDimensionValidator::validateParameter(float currentVal)

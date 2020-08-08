@@ -14,6 +14,7 @@ class TemperatureMonitor
 {
 	public:
 		explicit TemperatureMonitor(float);
+		TemperatureMonitor(const TemperatureMonitor&);
 		~TemperatureMonitor();
 		void onTemperatureValueUpdate(float);
 	private:

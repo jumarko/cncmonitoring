@@ -15,6 +15,7 @@ class SelfDiagnosisMonitor
 {
 	public:
 		SelfDiagnosisMonitor();
+		SelfDiagnosisMonitor(const SelfDiagnosisMonitor&);
 		~SelfDiagnosisMonitor();
 		void onSelfDiagnosisUpdate(float);
 	private:

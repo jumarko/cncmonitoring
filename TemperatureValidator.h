@@ -14,6 +14,7 @@
 class TemperatureValidator:public IValidator
 {
 public:
+	TemperatureValidator() {}
 	explicit TemperatureValidator(float threshold);
 	virtual ~TemperatureValidator();
 	void validateParameter(float);

@@ -14,6 +14,7 @@
 class PartDimensionValidator:public IValidator
 {
 public:
+	PartDimensionValidator() {}
 	explicit PartDimensionValidator(float threshold);
 	virtual ~PartDimensionValidator();
 	void validateParameter(float);

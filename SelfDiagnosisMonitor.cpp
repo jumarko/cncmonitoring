@@ -13,6 +13,11 @@ SelfDiagnosisMonitor::SelfDiagnosisMonitor()
 	_validator = new SelfDiagnosisValidator();
 }
 
+SelfDiagnosisMonitor::SelfDiagnosisMonitor(const SelfDiagnosisMonitor& obj)
+{
+	_validator = new SelfDiagnosisValidator();
+}
+
 SelfDiagnosisMonitor::~SelfDiagnosisMonitor()
 {
 	delete _validator;

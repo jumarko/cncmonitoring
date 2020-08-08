@@ -14,11 +14,13 @@ class OperatingDurationMonitor
 {
 	public:
 		explicit OperatingDurationMonitor(float);
+		OperatingDurationMonitor(const OperatingDurationMonitor&);
 		~OperatingDurationMonitor();
 		void onOperatingDurationUpdate();
 	private:
 		IValidator* _validator;
 		float _operatingDurationInMins;
+		float _thresholdOperatingDurationInMins;
 };
 
 
