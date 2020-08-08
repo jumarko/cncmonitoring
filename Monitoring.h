@@ -1,7 +1,7 @@
-#include "Monitor/TemperaturMonitor.h"
-#include "Monitor/SelfDIagnosisMonitor.h"
-#include "Monitor/PartDimensionMonitor.h"
-#include "Monitor/OperatingDurationMonitor.h"
+#include "TemperaturMonitor.h"
+#include "SelfDIagnosisMonitor.h"
+#include "PartDimensionMonitor.h"
+#include "OperatingDurationMonitor.h"
 
 typedef enum MonitorType
 {
