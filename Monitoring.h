@@ -27,6 +27,7 @@ class CNCMonitorFacade
 {
 public:
 	CNCMonitorFacade();
+	CNCMonitorFacade(const CNCMonitorFacade&);
 	~CNCMonitorFacade();
 private:
 	TemperatureMonitor* tempMonitor;
