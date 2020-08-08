@@ -10,6 +10,7 @@
 TemperatureMonitor::TemperatureMonitor(float threshold)
 {
 	_validator = new TemperatureValidator(threshold);
+	_temperatureValue = 0;
 }
 
 TemperatureMonitor::~TemperatureMonitor()

@@ -20,6 +20,14 @@ CNCMonitorFacade::CNCMonitorFacade()
 	_partDimensionMonitor = new PartDimensionMonitor(0.5);
 }
 
+CNCMonitorFacade::~CNCMonitorFacade()
+{
+	delete _selfDiagMonitor;
+	delete tempMonitor;
+	delete _durationMonitor;
+	delete _partDimensionMonitor;
+}
+
 int main()
 {
 	CNCMonitorFacade monitor;

@@ -14,7 +14,7 @@
 class PartDimensionMonitor
 {
 	public:
-		PartDimensionMonitor(float);
+		explicit PartDimensionMonitor(float);
 		~PartDimensionMonitor();
 		void onPartDimensionUpdate(float);
 	private:

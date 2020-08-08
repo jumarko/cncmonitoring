@@ -14,7 +14,7 @@
 class OperatingDurationValidator:public IValidator
 {
 public:
-	OperatingDurationValidator(float threshold);
+	explicit OperatingDurationValidator(float threshold);
 	virtual ~OperatingDurationValidator();
 	void validateParameter(float);
 private:

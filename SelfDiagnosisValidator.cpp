@@ -17,7 +17,7 @@ SelfDiagnosisValidator::SelfDiagnosisValidator()
 
 SelfDiagnosisValidator::~SelfDiagnosisValidator()
 {
-
+	delete _alarm;
 }
 
 void SelfDiagnosisValidator::validateParameter(float currentVal)

@@ -18,7 +18,7 @@ OperatingDurationValidator::OperatingDurationValidator(float threshold)
 
 OperatingDurationValidator::~OperatingDurationValidator()
 {
-
+	delete _alarm;
 }
 
 void OperatingDurationValidator::validateParameter(float currentVal)

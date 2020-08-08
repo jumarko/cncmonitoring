@@ -15,6 +15,7 @@ SelfDiagnosisMonitor::SelfDiagnosisMonitor()
 
 SelfDiagnosisMonitor::~SelfDiagnosisMonitor()
 {
+	delete _validator;
 }
 
 void SelfDiagnosisMonitor::onSelfDiagnosisUpdate(float status)

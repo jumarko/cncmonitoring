@@ -15,6 +15,7 @@ PartDimensionMonitor::PartDimensionMonitor(float threshold)
 
 PartDimensionMonitor::~PartDimensionMonitor()
 {
+	delete _validator;
 }
 
 void PartDimensionMonitor::onPartDimensionUpdate(float currentVal)

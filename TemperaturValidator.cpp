@@ -17,7 +17,7 @@ TemperatureValidator::TemperatureValidator(float threshold)
 
 TemperatureValidator::~TemperatureValidator()
 {
-
+	delete _alarm;
 }
 
 void TemperatureValidator::validateParameter(float currentVal)

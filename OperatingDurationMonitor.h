@@ -13,7 +13,7 @@
 class OperatingDurationMonitor
 {
 	public:
-		OperatingDurationMonitor(float);
+		explicit OperatingDurationMonitor(float);
 		~OperatingDurationMonitor();
 		void onOperatingDurationUpdate();
 	private:

@@ -10,10 +10,12 @@
 OperatingDurationMonitor::OperatingDurationMonitor(float threshold)
 {
 	_validator = new OperatingDurationValidator(threshold);
+	_operatingDurationInMins = 0;
 }
 
 OperatingDurationMonitor::~OperatingDurationMonitor()
 {
+	delete _validator;
 }
 
 void OperatingDurationMonitor::onOperatingDurationUpdate()
