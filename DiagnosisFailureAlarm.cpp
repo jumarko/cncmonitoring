@@ -22,7 +22,10 @@ void DiagnosisFailureAlarm::setMediator(IMediator* mediator)
 
 void DiagnosisFailureAlarm::raiseAlarm(enValidationResultType validationResult)
 {
-	std::cout << "Self-Diagnosis Failure!\n";
-	std::cout << errorTextHash[(int)_mediator->getMonitorType()][(int)validationResult] << selfDiagError[(int)_mediator->getCurrentParamValue()];
+	if(validationResult == en_VALIDATION_FAILED)
+	{
+	   std::cout << "Self-Diagnosis Failure!\n";
+	   std::cout << errorTextHash[(int)_mediator->getMonitorType()][(int)validationResult] << selfDiagError[(int)_mediator->getCurrentParamValue()];
+	}
 }
 
