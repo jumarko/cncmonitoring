@@ -27,7 +27,7 @@ TEST(TemperatureBehaviorTest, ValidInput)
 
 	temperaturMonitor.setMediator(temperaturMediator);
 	thresholdValidator.setMediator(temperaturMediator);
-	mechFailureAlarm.setMediator(temperaturMediator);
+	envFailureAlarm.setMediator(temperaturMediator);
 
 	temperaturMonitor.paramValueObserverUpdate(20);
 	
@@ -46,7 +46,7 @@ TEST(TemperatureBehaviorTest, InvalidInput)
 
 	temperaturMonitor.setMediator(temperaturMediator);
 	thresholdValidator.setMediator(temperaturMediator);
-	mechFailureAlarm.setMediator(temperaturMediator);
+	envFailureAlarm.setMediator(temperaturMediator);
 
 	temperaturMonitor.paramValueObserverUpdate(35);
 	
@@ -60,8 +60,8 @@ TEST(OperatingDurationValidator, ValidInput)
 	MechanicalFailureAlarm mechFailureAlarm;
 
 	IMediator* durationMediator = new Mediator(&operatingDurationMonitor, &thresholdValidator, &mechFailureAlarm);
-	temperaturMediator->setThresholdValue(360);
-	temperaturMediator->setMonitorType(en_MONITORPARAM_DURATION);
+	durationMediator->setThresholdValue(360);
+	durationMediator->setMonitorType(en_MONITORPARAM_DURATION);
 
 	operatingDurationMonitor.setMediator(durationMediator);
 	thresholdValidator.setMediator(durationMediator);
@@ -79,8 +79,8 @@ TEST(OperatingDurationValidator, InvalidInput)
 	MechanicalFailureAlarm mechFailureAlarm;
 
 	IMediator* durationMediator = new Mediator(&operatingDurationMonitor, &thresholdValidator, &mechFailureAlarm);
-	temperaturMediator->setThresholdValue(360);
-	temperaturMediator->setMonitorType(en_MONITORPARAM_DURATION);
+	durationMediator->setThresholdValue(360);
+	durationMediator->setMonitorType(en_MONITORPARAM_DURATION);
 
 	operatingDurationMonitor.setMediator(durationMediator);
 	thresholdValidator.setMediator(durationMediator);
@@ -97,8 +97,8 @@ TEST(SelfDiagnosisValidator, ValidInput)
 	DiagnosisFailureAlarm diagFailureAlarm;
 
 	IMediator* diagnosisMediator = new Mediator(&selfDiagnosisMonitor, &errorCodeValidator, &diagFailureAlarm);
-	diagnosisMonitor->setThresholdValue(0xFF);
-	diagnosisMonitor->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
+	diagnosisMediator->setThresholdValue(0xFF);
+	diagnosisMediator->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
 
 	selfDiagnosisMonitor.setMediator(durationMediator);
 	errorCodeValidator.setMediator(durationMediator);
@@ -134,8 +134,8 @@ TEST(PartDimensionValidator, ValidInput)
 	MechanicalFailureAlarm mechFailureAlarm;
 
 	IMediator* partDimensionMediator = new Mediator(&partDimensionMonitor, &thresholdValidator, &mechFailureAlarm);
-	partDimensionMonitor->setThresholdValue(0.5);
-	partDimensionMonitor->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
+	partDimensionMediator->setThresholdValue(0.5);
+	partDimensionMediator->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
 
 	partDimensionMonitor.setMediator(durationMediator);
 	thresholdValidator.setMediator(durationMediator);
@@ -153,8 +153,8 @@ TEST(PartDimensionValidator, InvalidInput)
 	MechanicalFailureAlarm mechFailureAlarm;
 
 	IMediator* partDimensionMediator = new Mediator(&partDimensionMonitor, &thresholdValidator, &mechFailureAlarm);
-	partDimensionMonitor->setThresholdValue(0.5);
-	partDimensionMonitor->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
+	partDimensionMediator->setThresholdValue(0.5);
+	partDimensionMediator->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
 
 	partDimensionMonitor.setMediator(durationMediator);
 	thresholdValidator.setMediator(durationMediator);
