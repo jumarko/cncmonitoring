@@ -116,8 +116,8 @@ TEST(SelfDiagnosisValidator, InvalidInput)
 	DiagnosisFailureAlarm diagFailureAlarm;
 
 	IMediator* diagnosisMediator = new Mediator(&selfDiagnosisMonitor, &errorCodeValidator, &diagFailureAlarm);
-	diagnosisMonitor->setThresholdValue(0xFF);
-	diagnosisMonitor->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
+	diagnosisMediator->setThresholdValue(0xFF);
+	diagnosisMediator->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
 
 	selfDiagnosisMonitor.setMediator(diagnosisMediator);
 	errorCodeValidator.setMediator(diagnosisMediator);
