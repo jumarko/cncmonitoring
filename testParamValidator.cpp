@@ -100,9 +100,9 @@ TEST(SelfDiagnosisValidator, ValidInput)
 	diagnosisMediator->setThresholdValue(0xFF);
 	diagnosisMediator->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
 
-	selfDiagnosisMonitor.setMediator(durationMediator);
-	errorCodeValidator.setMediator(durationMediator);
-	diagFailureAlarm.setMediator(durationMediator);
+	selfDiagnosisMonitor.setMediator(diagnosisMediator);
+	errorCodeValidator.setMediator(diagnosisMediator);
+	diagFailureAlarm.setMediator(diagnosisMediator);
 
 	selfDiagnosisMonitor.paramValueObserverUpdate(0xFF);
 	
@@ -119,9 +119,9 @@ TEST(SelfDiagnosisValidator, InvalidInput)
 	diagnosisMonitor->setThresholdValue(0xFF);
 	diagnosisMonitor->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
 
-	selfDiagnosisMonitor.setMediator(durationMediator);
-	errorCodeValidator.setMediator(durationMediator);
-	diagFailureAlarm.setMediator(durationMediator);
+	selfDiagnosisMonitor.setMediator(diagnosisMediator);
+	errorCodeValidator.setMediator(diagnosisMediator);
+	diagFailureAlarm.setMediator(diagnosisMediator);
 
 	selfDiagnosisMonitor.paramValueObserverUpdate(0xFF);
 	
@@ -137,9 +137,9 @@ TEST(PartDimensionValidator, ValidInput)
 	partDimensionMediator->setThresholdValue(0.5);
 	partDimensionMediator->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
 
-	partDimensionMonitor.setMediator(durationMediator);
-	thresholdValidator.setMediator(durationMediator);
-	mechFailureAlarm.setMediator(durationMediator);
+	partDimensionMonitor.setMediator(partDimensionMediator);
+	thresholdValidator.setMediator(partDimensionMediator);
+	mechFailureAlarm.setMediator(partDimensionMediator);
 
 	partDimensionMonitor.paramValueObserverUpdate(0.2);
 	
@@ -156,9 +156,9 @@ TEST(PartDimensionValidator, InvalidInput)
 	partDimensionMediator->setThresholdValue(0.5);
 	partDimensionMediator->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
 
-	partDimensionMonitor.setMediator(durationMediator);
-	thresholdValidator.setMediator(durationMediator);
-	mechFailureAlarm.setMediator(durationMediator);
+	partDimensionMonitor.setMediator(partDimensionMediator);
+	thresholdValidator.setMediator(partDimensionMediator);
+	mechFailureAlarm.setMediator(partDimensionMediator);
 
 	partDimensionMonitor.paramValueObserverUpdate(0.8);
 	
