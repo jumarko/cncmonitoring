@@ -1,4 +1,4 @@
-#include "PartDimensionValidator.h"
+/*#include "PartDimensionValidator.h"
 #include "OperatingDurationValidator.h"
 #include "SelfDiagnosisValidator.h"
 #include "TemperatureValidator.h"
@@ -58,4 +58,4 @@ TEST(TemperatureValidator, InvalidInput)
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
-}
+}*/
