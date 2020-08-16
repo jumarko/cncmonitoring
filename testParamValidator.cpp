@@ -1,3 +1,4 @@
+#include <gtest/gtest.h>
 /*#include "PartDimensionValidator.h"
 #include "OperatingDurationValidator.h"
 #include "SelfDiagnosisValidator.h"
@@ -54,8 +55,8 @@ TEST(TemperatureValidator, InvalidInput)
 	float threshold = 30;
 	TemperatureValidator tempValidator(threshold);
 	ASSERT_EQ(true, tempValidator.validateParameter(35));
-}
+}*/
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
-}*/
+}
