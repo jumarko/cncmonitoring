@@ -79,7 +79,7 @@ TEST(OperatingDurationValidator, InvalidInput)
 	MechanicalFailureAlarm mechFailureAlarm;
 
 	IMediator* durationMediator = new Mediator(&operatingDurationMonitor, &thresholdValidator, &mechFailureAlarm);
-	durationMediator->setThresholdValue(360);
+	durationMediator->setThresholdValue(10);
 	durationMediator->setMonitorType(en_MONITORPARAM_DURATION);
 
 	operatingDurationMonitor.setMediator(durationMediator);
@@ -123,7 +123,7 @@ TEST(SelfDiagnosisValidator, InvalidInput)
 	errorCodeValidator.setMediator(diagnosisMediator);
 	diagFailureAlarm.setMediator(diagnosisMediator);
 
-	selfDiagnosisMonitor.paramValueObserverUpdate(0xFF);
+	selfDiagnosisMonitor.paramValueObserverUpdate(0x01);
 	
 	ASSERT_EQ(en_VALIDATION_FAILED, errorCodeValidator.getValidationResult());
 }
