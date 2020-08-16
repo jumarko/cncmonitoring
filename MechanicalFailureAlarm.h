@@ -15,7 +15,7 @@
 class MechanicalFailureAlarm:public IAlarm,public IColleague
 {
 	public:
-		MechanicalFailureAlarm(){}
+		MechanicalFailureAlarm();
 		virtual ~MechanicalFailureAlarm(){}
 		void setMediator(IMediator*);
 		virtual void raiseAlarm(enValidationResultType);

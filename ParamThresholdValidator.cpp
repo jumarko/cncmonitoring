@@ -11,6 +11,7 @@
 
 ParamThresholdValidator::ParamThresholdValidator()
 {
+	_mediator = NULL;
 	_validationResult = en_VALIDATION_MAX;
 }
 

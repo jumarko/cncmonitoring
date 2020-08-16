@@ -9,6 +9,7 @@
 
 TemperatureMonitor::TemperatureMonitor()
 {
+	_mediator = NULL;
 	_temperatureValue = 0;
 }
 

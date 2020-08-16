@@ -9,7 +9,10 @@
 #include "ErrorCodesDefine.h"
 #include <iostream>
 
-
+MechanicalFailureAlarm::MechanicalFailureAlarm()
+{
+	_mediator = NULL;
+}
 
 void MechanicalFailureAlarm::setMediator(IMediator* mediator)
 {

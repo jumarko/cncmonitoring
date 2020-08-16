@@ -10,7 +10,10 @@
 #include "ErrorCodesDefine.h"
 #include <iostream>
 
-
+DiagnosisFailureAlarm::DiagnosisFailureAlarm()
+{
+	_mediator = NULL;
+}
 
 void DiagnosisFailureAlarm::setMediator(IMediator* mediator)
 {

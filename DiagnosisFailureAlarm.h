@@ -15,7 +15,7 @@
 class DiagnosisFailureAlarm:public IAlarm
 {
 	public:
-		DiagnosisFailureAlarm(){}
+		DiagnosisFailureAlarm();
 		virtual ~DiagnosisFailureAlarm(){}
 		void setMediator(IMediator*);
 		virtual void raiseAlarm(enValidationResultType);

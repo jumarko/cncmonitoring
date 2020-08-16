@@ -9,6 +9,7 @@
 
 OperatingDurationMonitor::OperatingDurationMonitor()
 {
+	_mediator = NULL;
 	_operatingDurationInMinutes = 0;
 }
 

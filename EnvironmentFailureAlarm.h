@@ -15,7 +15,7 @@
 class EnvironmentFailureAlarm:public IAlarm
 {
 	public:
-		EnvironmentFailureAlarm(){}
+		EnvironmentFailureAlarm();
 		virtual ~EnvironmentFailureAlarm(){}
 		void setMediator(IMediator*);
 		virtual void raiseAlarm(enValidationResultType);

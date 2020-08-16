@@ -10,6 +10,7 @@
 
 SelfDiagnosisMonitor::SelfDiagnosisMonitor()
 {
+	_mediator = NULL;
 	_selfDiagCode = -1;
 }
 

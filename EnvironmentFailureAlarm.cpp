@@ -10,7 +10,10 @@
 #include "ErrorCodesDefine.h"
 #include <iostream>
 
-
+EnvironmentFailureAlarm::EnvironmentFailureAlarm()
+{
+	_mediator = NULL;
+}
 
 void EnvironmentFailureAlarm::setMediator(IMediator* mediator)
 {
