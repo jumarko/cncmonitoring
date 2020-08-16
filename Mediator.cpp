@@ -9,9 +9,12 @@
 
 #include "Mediator.h"
 
-Mediator::Mediator(IMonitor* monitor, IValidator* validator, IAlarm* alarm):_monitor(monitor),
-_validator(validator), _alarm(alarm), _thresholdValue(0), _monitorParam(en_MONITORPARAM_MAX), _validationResult(en_VALIDATION_MAX)
+Mediator::Mediator(IMonitor* monitor, IValidator* validator, IAlarm* alarm):_monitorParam(en_MONITORPARAM_MAX), _validationResult(en_VALIDATION_MAX)
 {
+	_monitor = monitor;
+	_validator = validator;
+	_alarm = alarm;
+	_thresholdValue = 0;
 }
 
 Mediator::Mediator(const Mediator& obj)

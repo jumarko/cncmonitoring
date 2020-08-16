@@ -11,10 +11,10 @@
 #include <iostream>
 
 
-ParamErrorCodeValidator::ParamErrorCodeValidator()
+ParamErrorCodeValidator::ParamErrorCodeValidator():
+	_validationResult(en_VALIDATION_MAX)
 {
 	_mediator = 0;
-	_validationResult = en_VALIDATION_MAX;
 }
 
 ParamErrorCodeValidator::~ParamErrorCodeValidator()

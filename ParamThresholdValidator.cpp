@@ -9,10 +9,10 @@
 
 #include "MonitorDefines.h"
 
-ParamThresholdValidator::ParamThresholdValidator()
+ParamThresholdValidator::ParamThresholdValidator():
+	_validationResult(en_VALIDATION_MAX)
 {
 	_mediator = 0;
-	_validationResult = en_VALIDATION_MAX;
 }
 
 ParamThresholdValidator::~ParamThresholdValidator()
