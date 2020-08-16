@@ -12,7 +12,7 @@
 
 DiagnosisFailureAlarm::DiagnosisFailureAlarm()
 {
-	_mediator = NULL;
+	_mediator = 0;
 }
 
 void DiagnosisFailureAlarm::setMediator(IMediator* mediator)

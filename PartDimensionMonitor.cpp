@@ -10,7 +10,7 @@
 
 PartDimensionMonitor::PartDimensionMonitor()
 {
-	_mediator = NULL;
+	_mediator = 0;
 	_partDimensionValue = 0;
 }
 

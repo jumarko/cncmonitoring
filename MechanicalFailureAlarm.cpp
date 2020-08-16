@@ -11,7 +11,7 @@
 
 MechanicalFailureAlarm::MechanicalFailureAlarm()
 {
-	_mediator = NULL;
+	_mediator = 0;
 }
 
 void MechanicalFailureAlarm::setMediator(IMediator* mediator)

@@ -12,7 +12,7 @@
 
 EnvironmentFailureAlarm::EnvironmentFailureAlarm()
 {
-	_mediator = NULL;
+	_mediator = 0;
 }
 
 void EnvironmentFailureAlarm::setMediator(IMediator* mediator)

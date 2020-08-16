@@ -13,7 +13,7 @@
 
 ParamErrorCodeValidator::ParamErrorCodeValidator()
 {
-	_mediator = NULL;
+	_mediator = 0;
 	_validationResult = en_VALIDATION_MAX;
 }
 
