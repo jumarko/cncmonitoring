@@ -10,22 +10,32 @@
 
 SelfDiagnosisMonitor::SelfDiagnosisMonitor()
 {
-	_validator = new SelfDiagnosisValidator();
-}
-
-SelfDiagnosisMonitor::SelfDiagnosisMonitor(const SelfDiagnosisMonitor& obj)
-{
-	_validator = new SelfDiagnosisValidator();
+	_selfDiagCode = -1;
 }
 
 SelfDiagnosisMonitor::~SelfDiagnosisMonitor()
 {
-	delete _validator;
 }
 
 void SelfDiagnosisMonitor::onSelfDiagnosisUpdate(float status)
 {
-	_validator->validateParameter(status);
+	_selfDiagCode = status;
+	_mediator->validateParameter();
+}
+
+float SelfDiagnosisMonitor::getCurrentParamValue()
+{
+	return _selfDiagCode;
+}
+
+void SelfDiagnosisMonitor::setMediator(IMediator* mediator)
+{
+	_mediator = mediator;
 }
 
 
+
+void SelfDiagnosisMonitor::paramValueObserverUpdate(float val)
+{
+	onSelfDiagnosisUpdate(val);
+}

@@ -9,15 +9,18 @@
 #define ALARM_MECHANICALFAILUREALARM_H_
 
 #include "IAlarm.h"
+#include "IMediator.h"
+#include "IColleague.h"
 
-class MechanicalFailureAlarm:public IAlarm
+class MechanicalFailureAlarm:public IAlarm,public IColleague
 {
 	public:
 		MechanicalFailureAlarm(){}
 		virtual ~MechanicalFailureAlarm(){}
-		virtual void raiseAlarm(){
-			std::cout << "Mechanical Parameter exceeds threshold! Please check!\n";
-		}
+		void setMediator(IMediator*);
+		virtual void raiseAlarm(enValidationResultType);
+	private:
+		IMediator* _mediator;
 };
 
 

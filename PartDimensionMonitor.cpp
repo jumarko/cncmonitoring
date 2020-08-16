@@ -8,25 +8,32 @@
 
 #include "PartDimensionMonitor.h"
 
-PartDimensionMonitor::PartDimensionMonitor(float threshold)
+PartDimensionMonitor::PartDimensionMonitor()
 {
-	_validator = new PartDimensionValidator(threshold);
-}
-
-PartDimensionMonitor::PartDimensionMonitor(const PartDimensionMonitor&)
-{
-	_validator = new PartDimensionValidator();
+	_partDimensionValue = 0;
 }
 
 PartDimensionMonitor::~PartDimensionMonitor()
 {
-	delete _validator;
 }
 
 void PartDimensionMonitor::onPartDimensionUpdate(float currentVal)
 {
-	_validator->validateParameter(currentVal);
+	_partDimensionValue = currentVal;
+	_mediator->validateParameter();
 }
 
+float PartDimensionMonitor::getCurrentParamValue()
+{
+	return _partDimensionValue;
+}
 
+void PartDimensionMonitor::setMediator(IMediator* mediator)
+{
+	_mediator = mediator;
+}
 
+void PartDimensionMonitor::paramValueObserverUpdate(float val)
+{
+	onPartDimensionUpdate(val);
+}

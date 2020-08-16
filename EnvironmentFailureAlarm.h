@@ -8,17 +8,18 @@
 #ifndef ALARM_ENVIRONMENTFAILUREALARM_H_
 #define ALARM_ENVIRONMENTFAILUREALARM_H_
 
-#include <iostream>
 #include "IAlarm.h"
+#include "IMediator.h"
+#include "IColleague.h"
 
 class EnvironmentFailureAlarm:public IAlarm
 {
 	public:
 		EnvironmentFailureAlarm(){}
 		virtual ~EnvironmentFailureAlarm(){}
-		virtual void raiseAlarm() {
-			std::cout << "Environment parameter exceeds threshold! Please check!\n";
-		}
+		void setMediator(IMediator*);
+		virtual void raiseAlarm(enValidationResultType);
+	private:
+		IMediator* _mediator;
 };
-
 #endif /* ALARM_ENVIRONMENTFAILUREALARM_H_ */

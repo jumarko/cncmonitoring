@@ -8,18 +8,22 @@
 #ifndef MONITOR_OPERATINGDURATIONMONITOR_H_
 #define MONITOR_OPERATINGDURATIONMONITOR_H_
 
-#include "OperatingDurationValidator.h"
+#include "IMonitor.h"
+#include "IMediator.h"
+#include "IColleague.h"
 
-class OperatingDurationMonitor
+class OperatingDurationMonitor:public IMonitor, public IColleague
 {
 	public:
-		explicit OperatingDurationMonitor(float);
-		OperatingDurationMonitor(const OperatingDurationMonitor&);
+		OperatingDurationMonitor();
 		~OperatingDurationMonitor();
 		void onOperatingDurationUpdate();
+		float getCurrentParamValue();
+		void setMediator(IMediator*);
+		void paramValueObserverUpdate(float);
 	private:
-		IValidator* _validator;
-		float _operatingDurationInMins;
+		IMediator* _mediator;
+		float _operatingDurationInMinutes;
 };
 
 

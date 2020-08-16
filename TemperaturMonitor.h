@@ -1,5 +1,5 @@
 /*
- * TemperaturMonitor.h
+l * TemperaturMonitor.h
  *
  *  Created on: Aug 8, 2020
  *      Author: vma6cob
@@ -8,17 +8,21 @@
 #ifndef TEMPERATURMONITOR_H_
 #define TEMPERATURMONITOR_H_
 
-#include "TemperatureValidator.h"
+#include "IMonitor.h"
+#include "IMediator.h"
+#include "IColleague.h"
 
-class TemperatureMonitor
+class TemperatureMonitor:public IMonitor, public IColleague
 {
 	public:
-		explicit TemperatureMonitor(float);
-		TemperatureMonitor(const TemperatureMonitor&);
+		TemperatureMonitor();
 		~TemperatureMonitor();
 		void onTemperatureValueUpdate(float);
+		float getCurrentParamValue();
+		void setMediator(IMediator*);
+		void paramValueObserverUpdate(float);
 	private:
-		IValidator* _validator;
+		IMediator* _mediator;
 		float _temperatureValue;
 };
 

@@ -7,26 +7,32 @@
 
 #include "OperatingDurationMonitor.h"
 
-OperatingDurationMonitor::OperatingDurationMonitor(float threshold)
+OperatingDurationMonitor::OperatingDurationMonitor()
 {
-	_validator = new OperatingDurationValidator(threshold);
-	_operatingDurationInMins = 0;
-}
-
-OperatingDurationMonitor::OperatingDurationMonitor(const OperatingDurationMonitor& obj)
-{
-	_validator = new OperatingDurationValidator();
-	_operatingDurationInMins = 0;
+	_operatingDurationInMinutes = 0;
 }
 
 OperatingDurationMonitor::~OperatingDurationMonitor()
 {
-	delete _validator;
 }
 
 void OperatingDurationMonitor::onOperatingDurationUpdate()
 {
-	_operatingDurationInMins += 15;
-	_validator->validateParameter(_operatingDurationInMins);
+	_operatingDurationInMinutes += 15;
+	_mediator->validateParameter();
 }
 
+float OperatingDurationMonitor::getCurrentParamValue()
+{
+	return _operatingDurationInMinutes;
+}
+
+void OperatingDurationMonitor::setMediator(IMediator* mediator)
+{
+	_mediator = mediator;
+}
+
+void OperatingDurationMonitor::paramValueObserverUpdate(float val)
+{
+	onOperatingDurationUpdate();
+}

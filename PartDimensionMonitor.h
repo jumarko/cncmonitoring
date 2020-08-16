@@ -9,17 +9,22 @@
 #define MONITOR_PARTDIMENSIONMONITOR_H_
 
 
-#include "PartDimensionValidator.h"
+#include "IMonitor.h"
+#include "IMediator.h"
+#include "IColleague.h"
 
-class PartDimensionMonitor
+class PartDimensionMonitor:public IMonitor, public IColleague
 {
 	public:
-		explicit PartDimensionMonitor(float);
-		PartDimensionMonitor(const PartDimensionMonitor&);
+		PartDimensionMonitor();
 		~PartDimensionMonitor();
 		void onPartDimensionUpdate(float);
+		float getCurrentParamValue();
+		void setMediator(IMediator*);
+		void paramValueObserverUpdate(float);
 	private:
-		IValidator* _validator;
+		IMediator* _mediator;
+		float _partDimensionValue;
 };
 
 

@@ -7,24 +7,33 @@
 
 #include "TemperaturMonitor.h"
 
-TemperatureMonitor::TemperatureMonitor(float threshold)
+TemperatureMonitor::TemperatureMonitor()
 {
-	_validator = new TemperatureValidator(threshold);
 	_temperatureValue = 0;
 }
 
-TemperatureMonitor::TemperatureMonitor(const TemperatureMonitor& obj)
-{
-	_validator = new TemperatureValidator();
-	_temperatureValue = 0;
-}
 TemperatureMonitor::~TemperatureMonitor()
 {
-	delete _validator;
+
 }
 
 void TemperatureMonitor::onTemperatureValueUpdate(float temperature)
 {
 	_temperatureValue = temperature;
-	_validator->validateParameter(_temperatureValue);
+	_mediator->validateParameter();
+}
+
+float TemperatureMonitor::getCurrentParamValue()
+{
+	return _temperatureValue;
+}
+
+void TemperatureMonitor::setMediator(IMediator* mediator)
+{
+	_mediator = mediator;
+}
+
+void TemperatureMonitor::paramValueObserverUpdate(float val)
+{
+	onTemperatureValueUpdate(val);
 }

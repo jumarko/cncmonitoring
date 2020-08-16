@@ -9,17 +9,22 @@
 #define MONITOR_SELFDIAGNOSISMONITOR_H_
 
 
-#include "SelfDiagnosisValidator.h"
+#include "IMonitor.h"
+#include "IMediator.h"
+#include "IColleague.h"
 
-class SelfDiagnosisMonitor
+class SelfDiagnosisMonitor:public IMonitor, public IColleague
 {
 	public:
 		SelfDiagnosisMonitor();
-		SelfDiagnosisMonitor(const SelfDiagnosisMonitor&);
 		~SelfDiagnosisMonitor();
 		void onSelfDiagnosisUpdate(float);
+		float getCurrentParamValue();
+		void setMediator(IMediator*);
+		void paramValueObserverUpdate(float);
 	private:
-		IValidator* _validator;
+		IMediator* _mediator;
+		float _selfDiagCode;
 };
 
 

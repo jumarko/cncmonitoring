@@ -1,45 +1,71 @@
 /*
  * Monitoring.cpp
  *
- *  Created on: Aug 8, 2020
+ *  Created on: Aug 16, 2020
  *      Author: vma6cob
  */
 
-#include "Monitoring.h"
-#include <iostream>
-#include <stdio.h>
 
 
 
+#include "Monitor/OperatingDurationMonitor.h"
+#include "Monitor/PartDimensionMonitor.h"
+#include "Monitor/SelfDIagnosisMonitor.h"
+#include "Monitor/TemperaturMonitor.h"
 
-CNCMonitorFacade::CNCMonitorFacade()
-{
-	_selfDiagMonitor = new SelfDiagnosisMonitor();
-	tempMonitor = new TemperatureMonitor(30.0);
-	_durationMonitor = new OperatingDurationMonitor(360);
-	_partDimensionMonitor = new PartDimensionMonitor(0.5);
-}
+#include "Validator/ParamErrorCodeValidator.h"
+#include "Validator/ParamThresholdValidator.h"
 
-CNCMonitorFacade::CNCMonitorFacade(const CNCMonitorFacade& obj)
-{
-	_selfDiagMonitor = new SelfDiagnosisMonitor();
-	tempMonitor = new TemperatureMonitor(30.0);
-	_durationMonitor = new OperatingDurationMonitor(360);
-	_partDimensionMonitor = new PartDimensionMonitor(0.5);
-}
+#include "Alarm/DiagnosisFailureAlarm.h"
+#include "Alarm/EnvironmentFailureAlarm.h"
+#include "Alarm/MechanicalFailureAlarm.h"
 
-CNCMonitorFacade::~CNCMonitorFacade()
-{
-	delete _selfDiagMonitor;
-	delete tempMonitor;
-	delete _durationMonitor;
-	delete _partDimensionMonitor;
-}
-/*
+#include "Mediator.h"
+
+#include "MonitorDefines.h"
+
 int main()
 {
-	CNCMonitorFacade monitor;
+
+/*	IMonitor* temperaturMonitor = new TemperatureMonitor();
+	IMonitor* operatingDurationMonitor = new OperatingDurationMonitor();
+	IMonitor* partDimensionMonitor = new PartDimensionMonitor();
+	IMonitor* selfDiagnosisMonitor = new SelfDiagnosisMonitor();
+
+	IValidator* errorCodeValidator = new ParamErrorCodeValidator();
+	IValidator* thresholdValidator = new ParamThresholdValidator();
+
+	IAlarm* diagFailureAlarm = new DiagnosisFailureAlarm();
+	IAlarm* envFailureAlarm = new EnvironmentFailureAlarm();
+	IAlarm* mechFailureAlarm = new MechanicalFailureAlarm();*/
+
+	TemperatureMonitor temperaturMonitor;
+	OperatingDurationMonitor operatingDurationMonitor;
+	PartDimensionMonitor partDimensionMonitor;
+	SelfDiagnosisMonitor selfDiagnosisMonitor;
+
+	ParamErrorCodeValidator errorCodeValidator;
+	ParamThresholdValidator thresholdValidator;
+
+	DiagnosisFailureAlarm diagFailureAlarm;
+	EnvironmentFailureAlarm envFailureAlarm;
+	MechanicalFailureAlarm mechFailureAlarm;
+
+
+	IMediator* temperaturMediator = new Mediator(&temperaturMonitor, &thresholdValidator, &mechFailureAlarm);
+	temperaturMediator->setThresholdValue(30);
+	temperaturMediator->setMonitorType(en_MONITORPARAM_TEMPERATURE);
+
+	temperaturMonitor.setMediator(temperaturMediator);
+	thresholdValidator.setMediator(temperaturMediator);
+	mechFailureAlarm.setMediator(temperaturMediator);
+
+
+	temperaturMonitor.paramValueObserverUpdate(35);
+	temperaturMonitor.paramValueObserverUpdate(20);
+
+
+
+
 	return 0;
 }
-
-*/

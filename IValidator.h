@@ -8,13 +8,15 @@
 #ifndef VALIDATOR_IVALIDATOR_H_
 #define VALIDATOR_IVALIDATOR_H_
 
+#include "MonitorDefines.h"
 
 class IValidator
 {
 public:
 	IValidator() {}
 	virtual ~IValidator() {}
-	virtual bool validateParameter(float) = 0;
+	virtual void validateParameter(float) = 0;
+	virtual enValidationResultType getValidationResult() = 0;
 
 };
 

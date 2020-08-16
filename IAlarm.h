@@ -9,12 +9,14 @@
 #define ALARM_IALARM_H_
 
 #include <iostream>
+#include "MonitorDefines.h"
+
 class IAlarm
 {
 	public:
 		IAlarm(){}
 		virtual ~IAlarm() {}
-		virtual void raiseAlarm() = 0;
+		virtual void raiseAlarm(enValidationResultType) = 0;
 };
 
 
