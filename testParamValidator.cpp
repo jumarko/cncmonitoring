@@ -1,61 +1,169 @@
 #include <gtest/gtest.h>
-/*#include "PartDimensionValidator.h"
-#include "OperatingDurationValidator.h"
-#include "SelfDiagnosisValidator.h"
-#include "TemperatureValidator.h"
-#include <gtest/gtest.h>
+#include "OperatingDurationMonitor.h"
+#include "PartDimensionMonitor.h"
+#include "SelfDIagnosisMonitor.h"
+#include "TemperaturMonitor.h"
 
-TEST(PartDimensionValidator, ValidInput)
+#include "ParamErrorCodeValidator.h"
+#include "ParamThresholdValidator.h"
+
+#include "DiagnosisFailureAlarm.h"
+#include "EnvironmentFailureAlarm.h"
+#include "MechanicalFailureAlarm.h"
+
+#include "Mediator.h"
+
+#include "MonitorDefines.h"
+
+TEST(TemperatureBehaviorTest, ValidInput)
 {
-	float threshold = 0.5;
-	PartDimensionValidator partDimensionValidator(threshold);
-	ASSERT_EQ(false, partDimensionValidator.validateParameter(0.3));
+	TemperatureMonitor temperaturMonitor;
+	ParamThresholdValidator thresholdValidator;
+	EnvironmentFailureAlarm envFailureAlarm;
+
+	IMediator* temperaturMediator = new Mediator(&temperaturMonitor, &thresholdValidator, &envFailureAlarm);
+	temperaturMediator->setThresholdValue(30);
+	temperaturMediator->setMonitorType(en_MONITORPARAM_TEMPERATURE);
+
+	temperaturMonitor.setMediator(temperaturMediator);
+	thresholdValidator.setMediator(temperaturMediator);
+	mechFailureAlarm.setMediator(temperaturMediator);
+
+	temperaturMonitor.paramValueObserverUpdate(20);
+	
+	ASSERT_EQ(en_VALIDATION_SUCCESS, thresholdValidator.getValidationResult());
 }
 
-TEST(PartDimensionValidator, InvalidInput)
+TEST(TemperatureBehaviorTest, InvalidInput)
 {
-	float threshold = 0.5;
-	PartDimensionValidator partDimensionValidator(threshold);
-	ASSERT_EQ(true, partDimensionValidator.validateParameter(0.6));
+	TemperatureMonitor temperaturMonitor;
+	ParamThresholdValidator thresholdValidator;
+	EnvironmentFailureAlarm envFailureAlarm;
+
+	IMediator* temperaturMediator = new Mediator(&temperaturMonitor, &thresholdValidator, &envFailureAlarm);
+	temperaturMediator->setThresholdValue(30);
+	temperaturMediator->setMonitorType(en_MONITORPARAM_TEMPERATURE);
+
+	temperaturMonitor.setMediator(temperaturMediator);
+	thresholdValidator.setMediator(temperaturMediator);
+	mechFailureAlarm.setMediator(temperaturMediator);
+
+	temperaturMonitor.paramValueObserverUpdate(35);
+	
+	ASSERT_EQ(en_VALIDATION_FAILED, thresholdValidator.getValidationResult());
 }
 
 TEST(OperatingDurationValidator, ValidInput)
 {
-	float threshold = 360;
-	OperatingDurationValidator operationDurationValidator(threshold);
-	ASSERT_EQ(false, operationDurationValidator.validateParameter(300));
+	OperatingDurationMonitor operatingDurationMonitor;
+	ParamThresholdValidator thresholdValidator;
+	MechanicalFailureAlarm mechFailureAlarm;
+
+	IMediator* durationMediator = new Mediator(&operatingDurationMonitor, &thresholdValidator, &mechFailureAlarm);
+	temperaturMediator->setThresholdValue(360);
+	temperaturMediator->setMonitorType(en_MONITORPARAM_DURATION);
+
+	operatingDurationMonitor.setMediator(durationMediator);
+	thresholdValidator.setMediator(durationMediator);
+	mechFailureAlarm.setMediator(durationMediator);
+
+	operatingDurationMonitor.paramValueObserverUpdate(300);
+	
+	ASSERT_EQ(en_VALIDATION_SUCCESS, thresholdValidator.getValidationResult());
 }
 
 TEST(OperatingDurationValidator, InvalidInput)
 {
-	float threshold = 360;
-	OperatingDurationValidator operationDurationValidator(threshold);
-	ASSERT_EQ(true, operationDurationValidator.validateParameter(370));
+	OperatingDurationMonitor operatingDurationMonitor;
+	ParamThresholdValidator thresholdValidator;
+	MechanicalFailureAlarm mechFailureAlarm;
+
+	IMediator* durationMediator = new Mediator(&operatingDurationMonitor, &thresholdValidator, &mechFailureAlarm);
+	temperaturMediator->setThresholdValue(360);
+	temperaturMediator->setMonitorType(en_MONITORPARAM_DURATION);
+
+	operatingDurationMonitor.setMediator(durationMediator);
+	thresholdValidator.setMediator(durationMediator);
+	mechFailureAlarm.setMediator(durationMediator);
+
+	operatingDurationMonitor.paramValueObserverUpdate(300);
+	
+	ASSERT_EQ(en_VALIDATION_FAILED, thresholdValidator.getValidationResult());
 }
 TEST(SelfDiagnosisValidator, ValidInput)
 {
-	SelfDiagnosisValidator selfDiagnosisValidator;
-	ASSERT_EQ(false, selfDiagnosisValidator.validateParameter(0xFF));
+	SelfDiagnosisMonitor selfDiagnosisMonitor;
+	ParamErrorCodeValidator errorCodeValidator;
+	DiagnosisFailureAlarm diagFailureAlarm;
+
+	IMediator* diagnosisMediator = new Mediator(&selfDiagnosisMonitor, &errorCodeValidator, &diagFailureAlarm);
+	diagnosisMonitor->setThresholdValue(0xFF);
+	diagnosisMonitor->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
+
+	selfDiagnosisMonitor.setMediator(durationMediator);
+	errorCodeValidator.setMediator(durationMediator);
+	diagFailureAlarm.setMediator(durationMediator);
+
+	selfDiagnosisMonitor.paramValueObserverUpdate(0xFF);
+	
+	ASSERT_EQ(en_VALIDATION_SUCCESS, errorCodeValidator.getValidationResult());
 }
 
 TEST(SelfDiagnosisValidator, InvalidInput)
 {
-	SelfDiagnosisValidator selfDiagnosisValidator;
-	ASSERT_EQ(true, selfDiagnosisValidator.validateParameter(0x00));
+	SelfDiagnosisMonitor selfDiagnosisMonitor;
+	ParamErrorCodeValidator errorCodeValidator;
+	DiagnosisFailureAlarm diagFailureAlarm;
+
+	IMediator* diagnosisMediator = new Mediator(&selfDiagnosisMonitor, &errorCodeValidator, &diagFailureAlarm);
+	diagnosisMonitor->setThresholdValue(0xFF);
+	diagnosisMonitor->setMonitorType(en_MONITORPARAM_SELF_DIAGNOSIS);
+
+	selfDiagnosisMonitor.setMediator(durationMediator);
+	errorCodeValidator.setMediator(durationMediator);
+	diagFailureAlarm.setMediator(durationMediator);
+
+	selfDiagnosisMonitor.paramValueObserverUpdate(0xFF);
+	
+	ASSERT_EQ(en_VALIDATION_FAILED, errorCodeValidator.getValidationResult());
 }
-TEST(TemperatureValidator, ValidInput)
+TEST(PartDimensionValidator, ValidInput)
 {
-	float threshold = 30;
-	TemperatureValidator tempValidator(threshold);
-	ASSERT_EQ(false, tempValidator.validateParameter(15));
+	PartDimensionMonitor partDimensionMonitor;
+	ParamThresholdValidator thresholdValidator;
+	MechanicalFailureAlarm mechFailureAlarm;
+
+	IMediator* partDimensionMediator = new Mediator(&partDimensionMonitor, &thresholdValidator, &mechFailureAlarm);
+	partDimensionMonitor->setThresholdValue(0.5);
+	partDimensionMonitor->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
+
+	partDimensionMonitor.setMediator(durationMediator);
+	thresholdValidator.setMediator(durationMediator);
+	mechFailureAlarm.setMediator(durationMediator);
+
+	partDimensionMonitor.paramValueObserverUpdate(0.2);
+	
+	ASSERT_EQ(en_VALIDATION_SUCCESS, thresholdValidator.getValidationResult());
 }
 
-TEST(TemperatureValidator, InvalidInput)
+TEST(PartDimensionValidator, InvalidInput)
 {
-	float threshold = 30;
-	TemperatureValidator tempValidator(threshold);
-	ASSERT_EQ(true, tempValidator.validateParameter(35));
-}*/
+	PartDimensionMonitor partDimensionMonitor;
+	ParamThresholdValidator thresholdValidator;
+	MechanicalFailureAlarm mechFailureAlarm;
+
+	IMediator* partDimensionMediator = new Mediator(&partDimensionMonitor, &thresholdValidator, &mechFailureAlarm);
+	partDimensionMonitor->setThresholdValue(0.5);
+	partDimensionMonitor->setMonitorType(en_MONITORPARAM_PART_DIMENSION);
+
+	partDimensionMonitor.setMediator(durationMediator);
+	thresholdValidator.setMediator(durationMediator);
+	mechFailureAlarm.setMediator(durationMediator);
+
+	partDimensionMonitor.paramValueObserverUpdate(0.8);
+	
+	ASSERT_EQ(en_VALIDATION_FAILED, thresholdValidator.getValidationResult());
+}
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
