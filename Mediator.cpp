@@ -19,7 +19,10 @@ Mediator::Mediator(IMonitor* monitor, IValidator* validator, IAlarm* alarm):_mon
 
 Mediator::Mediator(const Mediator& obj)
 {
-
+    _monitor = obj._monitor;
+	_validator = obj._validator;
+	_alarm = obj._alarm;
+	_thresholdValue = 0;
 }
 
 Mediator::~Mediator()
